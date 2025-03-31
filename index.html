@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Te quieres casar conmigo?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWlzbGtza2NvMnJkMzQzNjY2Y2ZyYjlvMDloYm54bWtqenVmMnppcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ddqG5nfF6snJu/giphy.gif');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Arial', sans-serif;
+            color: #c2185b;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        img {
+            width: 250px;
+            height: auto;
+            margin-top: 20px;
+            animation: ringSpin 2s infinite ease-in-out;
+        }
+
+        @keyframes ringSpin {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(20deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            background-color: #c2185b;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #e91e63;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #c2185b;
+            font-weight: bold;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+    <script>
+        function playSound(url) {
+            const audio = new Audio(url);
+            audio.play();
+        }
+
+        function mostrarMensaje(respuesta) {
+            const mensaje = respuesta ? '¡Sí! 💍 ¡Me haces la persona más feliz del mundo!' : 'No... 😢 ¡Aun así, siempre te amaré!';
+            document.getElementById('respuesta').innerText = mensaje;
+            const soundUrl = respuesta ? 'https://www.soundjay.com/button/sounds/button-4.mp3' : 'https://www.soundjay.com/button/sounds/button-10.mp3';
+            playSound(soundUrl);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Te quieres casar conmigo?</h1>
+        <img src="anillo.png" alt="Anillo de compromiso">
+        <div>
+            <button onclick="mostrarMensaje(true)">Sí</button>
+            <button onclick="mostrarMensaje(false)">No</button>
+        </div>
+        <div class="message" id="respuesta"></div>
+    </div>
+</body>
+</html>
